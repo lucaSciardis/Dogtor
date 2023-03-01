@@ -1,3 +1,7 @@
+<?php
+require_once("db.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,17 +15,29 @@
 
 <body>
 
-    <div class="container-fluid p-5  text-dark" >
+    <div class="container-fluid p-5  text-dark">
         <div class="row">
             <div class="col-sm-4">
-            <img src="logo_dogtor.png" width="120" height="120">
 
             </div>
             <div class="col-sm-4">
                 <h1 class="text-center">Dogtor</h1>
+                <?php
+                if (isset($_GET['username'])) {
+                    echo "<h2 class='text-center '>Benvenuto " . $_GET['username'] . " </h2>";
+                } else {
+                }
+                ?>
+                <div class="text-center mt-3">
+                    <img src="yo.png" width="350" height="350">
+                </div>
+
+                <div class="text-center mt-1">
+                    <a href="prenotazione.php" class="btn btn-dark float-center mt-5" role="button">Prenota</a>
+                </div>
             </div>
             <div class="col-sm-4">
-                <a href="login.php" class="link-primary float-end">Login</a>
+                <a href="index.php" class="link-primary float-end">Logout</a>
             </div>
         </div>
 
@@ -32,20 +48,13 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-4">
-                <img src="logo_dogtor.png" class="float-center" width="300" height="300">
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+
             </div>
             <div class="col-sm-4">
-                <h3>Column 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+
             </div>
             <div class="col-sm-4">
-                <h3>Column 3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+
             </div>
         </div>
     </div>

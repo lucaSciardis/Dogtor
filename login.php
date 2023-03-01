@@ -1,27 +1,3 @@
-<?php
-require_once("db.php");
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $query = "select * from tProprietario where email='$email' and password='$password'";
-    $result = mysqli_query($db_remoto, $query);
-    while ($array = mysqli_fetch_array($result)) {
-        $username = $array['username'];
-    }
-    $count = mysqli_num_rows($result);
-    if ($count > 0) {
-        header("Location: index.php?username=$username");
-        exit;
-    } else {
-        echo "Login ERROR   "; }
-
-}
-
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,6 +28,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" class="form-control" name="password">
                     </div>
+                    <?php
+                    require_once("db.php");
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+                        $email = $_POST['email'];
+                        $password = $_POST['password'];
+
+                        $query = "select * from tProprietario where email='$email' and password='$password'";
+                        $result = mysqli_query($db_remoto, $query);
+                        while ($array = mysqli_fetch_array($result)) {
+                            $username = $array['username'];
+                            $idTipoUtente = $array['idTipoUtente'];
+                        }
+                        $count = mysqli_num_rows($result);
+                        if ($count > 0) {
+                            if ($idTipoUtente == 1) {
+                                header("Location: index_user.php?username=$username");
+                            } else if ($idTipoUtente == 2) {
+                                header("Location: index_segretario.php?username=$username");
+                            } else if ($idTipoUtente == 3) {
+                                header("Location: index_dottore.php?username=$username");
+                            }
+                            exit;
+                        } else {
+                        echo "<h6 style='color: red;'>LE CREDENZIALI INSERITE RISULTANO ERRATE</h6>";
+                        }
+
+                    }
+
+
+
+
+                    ?>
                     <button type="submit" name='save' class="btn btn-dark">Submit</button>
                 </form>
             </div>
