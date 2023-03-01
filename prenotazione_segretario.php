@@ -1,5 +1,20 @@
 <?php
 require_once("db.php");
+if (isset($_GET['idPrenotazioneElimina'])) {
+    $id = $_GET['idPrenotazioneElimina'];
+
+    $sql = "DELETE FROM tPrenotazione WHERE idPrenotazione =  '$id' ";
+    $rec = mysqli_query($db_remoto, $sql) or die($sql . "<br>" . mysqli_error($db_remoto));
+
+
+}
+if (isset($_GET['idPrenotazioneConferma'])) {
+    $idPren = $_GET['idPrenotazioneConferma'];
+
+    $sqlConferma = " UPDATE tPrenotazione SET confermata = '1'WHERE idPrenotazione = '$idPren'; ";
+    $rec = mysqli_query($db_remoto, $sqlConferma) or die($sql . "<br>" . mysqli_error($db_remoto));
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +41,7 @@ require_once("db.php");
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th scope="col">id</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Cognome</th>
                             <th scope="col">Data</th>
@@ -43,22 +59,28 @@ require_once("db.php");
                         $rec = mysqli_query($db_remoto, $sql) or die($sql . "<br>" . mysqli_error($db_remoto));
 
                         while ($array = mysqli_fetch_array($rec)) {
-                            $idPrenotazione = $idPrenotazione['idPrenotazione'];
-                            $nomeAccompagnatore = $array['nomeAccompagnatore'];
-                            $cognomeAccompagnatore = $array['cognomeAccompagnatore'];
-                            $data = $array['data'];
-                            $ora = $array['ora'];
-                            echo "
+                            $confermata = $array['confermata'];
+                            if ($confermata == 0) {
+                                $id = $array['idPrenotazione'];
+                                $idPrenotazione = $array['idPrenotazione'];
+                                $nomeAccompagnatore = $array['nomeAccompagnatore'];
+                                $cognomeAccompagnatore = $array['cognomeAccompagnatore'];
+                                $data = $array['data'];
+                                $ora = $array['ora'];
+                                echo "
                             <tr>
+                            <td>" . $id . "</td>
+
                             <td>" . $nomeAccompagnatore . "</td>
                             <td>" . $cognomeAccompagnatore . "</td>
                             <td>" . $data . "</td>
                             <td>" . $ora . "</td>
-                            <td><a href='prenotazione_segretario.php?idPrenotazione=$idPrenotazione</a>Elimina</td>
-                            <td><a href='prenotazione_segretario.php?idPrenotazione=$idPrenotazione'</a>Conferma</td>
+                            <td><a href='prenotazione_segretario.php?idPrenotazioneElimina=$idPrenotazione'</a>Elimina</td>
+                            <td><a href='prenotazione_segretario.php?idPrenotazioneConferma=$idPrenotazione'</a>Conferma</td>
 
                             </tr>
                             <tr>";
+                            }
                         }
 
 
