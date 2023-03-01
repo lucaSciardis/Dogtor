@@ -29,11 +29,11 @@ require_once("db.php");
                 }
                 ?>
                 <div class="text-center mt-3">
-                    <img src="yo.png" width="350" height="350">
+                    <img src="doctor.png" width="400" height="400">
                 </div>
 
                 <div class="text-center mt-1">
-                    <a href="prenotazione.php" class="btn btn-dark float-center mt-5" role="button">Prenota</a>
+                    <a href="visite.php" class="btn btn-dark float-center mt-5" role="button">Visite</a>
                 </div>
             </div>
             <div class="col-sm-4">
