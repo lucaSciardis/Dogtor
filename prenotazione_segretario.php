@@ -36,6 +36,7 @@ if (isset($_GET['idPrenotazioneConferma'])) {
             </div>
             <div class="col-sm-4">
                 <h1 class="text-center">Prenotazioni da confermare</h1>
+                <a href="index.php" class="link-primary text-center">Logout</a>
 
 
                 <table class="table table-hover">

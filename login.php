@@ -14,7 +14,7 @@
     <div class="container-fluid p-5  text-dark">
         <div class="row">
             <div class="col-sm-4">
-                <a href="index.php" class="link-primary float-start">Home</a>
+                <h1><a href="index.php" class="link-primary float-start">Home</a></h1>
             </div>
             <div class="col-sm-4 text-center">
                 <h1 class="text-center">LOGIN</h1>
@@ -52,7 +52,7 @@
                             }
                             exit;
                         } else {
-                        echo "<h6 style='color: red;'>LE CREDENZIALI INSERITE RISULTANO ERRATE</h6>";
+                            echo "<h6 style='color: red;'>LE CREDENZIALI INSERITE RISULTANO ERRATE</h6>";
                         }
 
                     }

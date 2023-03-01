@@ -21,6 +21,9 @@ require_once("db.php");
             </div>
             <div class="col-sm-4">
                 <h1 class="text-center">Prenotazione</h1>
+                <a href="index.php" class="link-primary text-center">Logout</a>
+
+
                 <form action="prenotazione.php" method="post">
                     <div class="mb-3 mt-5">
                         <label for="exampleInputEmail1" class="form-label">Nome accompagnatore</label>
@@ -86,14 +89,6 @@ require_once("db.php");
                         <label for="exampleInputEmail1" class="form-label">Microchip</label>
                         <input type="text" name="microchip" class="form-control">
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Specie</label>
-                        <input type="text" name="specie_animale" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Razza</label>
-                        <input type="text" name="razza_animale" class="form-control">
-                    </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-dark ">Submit</button>
                     </div>
@@ -139,6 +134,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     echo $idSintomo;
 
+    $nome_animale = $_POST['nome_animale'];
+    echo $nome_animale;
+    $data_nascita = $_POST['data_animale'];
+    $luogo_nascita = $_POST['luogo_animale'];
+    $chip = $_POST['microchip'];
+
+    $sql_insert_animale = "INSERT INTO tAnimale (nome, dataNascita, luogoNascita, chip) VALUES ('$nome_animale', '$data_nascita', '$luogo_nascita', '$chip')";
+    $rec_animale = mysqli_query($db_remoto, $sql_insert_animale) or die($sql . "<br>" . mysqli_error($db_remoto));
 
 
     $nome = $_POST['nome'];
@@ -152,11 +155,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descrizione = $_POST['descrizione'];
     echo $descrizione;
     $urgenza = $_POST['urgenza'];
-    echo  $urgenza;
+    echo $urgenza;
 
 
-    $sql_insert = "INSERT INTO tPrenotazione (nomeAccompagnatore, cognomeAccompagnatore, data, ora, descrizione, confermata, idSintomo, urgenza) VALUES ('$nome', '$cognome', '$data', '$ora', '$descrizione', 0,'$idSintomo', '$urgenza' );";
+    $sql_insert = "INSERT INTO tPrenotazione (nomeAccompagnatore, cognomeAccompagnatore, data, ora, descrizione, confermata, idSintomo, urgenza,idAnimale) VALUES ('$nome', '$cognome', '$data', '$ora', '$descrizione', 0,'$idSintomo', '$urgenza', (SELECT MAX(idAnimale) from tAnimale) );";
     $rec = mysqli_query($db_remoto, $sql_insert) or die($sql . "<br>" . mysqli_error($db_remoto));
-}
 
+
+}
 ?>

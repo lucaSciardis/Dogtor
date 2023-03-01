@@ -33,11 +33,13 @@ require_once("db.php");
                 </div>
 
                 <div class="text-center mt-1">
-                    <a href="visite.php" class="btn btn-dark float-center mt-5" role="button">Visite</a>
+                    <a href="visite.php" class="btn btn-dark float-center mt-5" role="button">Visite confermate da Segretario</a>
+                    <a href="visite_fatte.php" class="btn btn-dark float-center mt-5" role="button">Visite Effetuate</a>
+
                 </div>
             </div>
             <div class="col-sm-4">
-            <a href="index.php" class="link-primary float-end">Logout</a>
+                <a href="index.php" class="link-primary float-end">Logout</a>
             </div>
         </div>
 

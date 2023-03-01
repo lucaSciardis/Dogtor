@@ -23,7 +23,7 @@
 
             </div>
             <div class="col-sm-4">
-                <a href="login.php" class="link-primary float-end">Login</a>
+                <h1> <a href="login.php" class="link-primary float-end">Login</a></h1>
             </div>
         </div>
 
@@ -44,6 +44,8 @@
                 <p class="fw-light fs-6">- Società 4 Zampe nel Cuore Italia </p>
                 <p class="fw-light fs-6">- European Association of Animal Protection</p>
                 <p class="fw-light fs-6"> - Società italiana della riproduzione SIR</p>
+                <p class="fw-light fs-6"> Si occupa principalmente di disfunzione erettile, eiaculazione precoce,
+                    infertilità maschile e prostatite.</p>
             </div>
             <div class="col-sm-4">
                 <img src="italy.png" width="250" height="250">
@@ -54,9 +56,10 @@
             <div class="col-sm-4">
                 <img src="earth.png" width="250" height="250">
                 <p class="fw-bold fs-3 ">Save The Planet</p>
-                <p class="fw-light fs-5 te"> Membri del associazione no profit che ha lo scopo di mettere in atto i principi
-                della sostenibilità, la solidarietà e l’innovazione responsabile, per invertire la rotta
-                dell’emergenza climatica e della crisi ambientale. </p>
+                <p class="fw-light fs-5 te"> Membri del associazione no profit che ha lo scopo di mettere in atto i
+                    principi
+                    della sostenibilità, la solidarietà e l’innovazione responsabile, per invertire la rotta
+                    dell’emergenza climatica e della crisi ambientale. </p>
 
 
 
